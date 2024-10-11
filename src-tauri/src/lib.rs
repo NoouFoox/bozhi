@@ -45,7 +45,7 @@ pub fn run() {
             let win_builder = win_builder.title_bar_style(TitleBarStyle::Transparent);
 
             let window = win_builder.build().unwrap();
-            window.open_devtools();
+            // window.open_devtools();
             #[cfg(target_os = "macos")]
             {
                 let default_color = [255.0, 244.0, 163.0, 1.0];

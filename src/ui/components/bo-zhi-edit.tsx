@@ -15,6 +15,7 @@ export default function BoZhiEdit({ theme }: BoZhiEditProps) {
     vditor = new Vditor("vditor", {
       toolbar: [],
       height: "100%",
+      width: "100%",
       after: () => {
         vditor!.setValue("");
         setVd(vditor!);

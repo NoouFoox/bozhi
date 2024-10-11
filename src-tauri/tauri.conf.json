@@ -20,11 +20,19 @@
     "active": true,
     "targets": "all",
     "icon": [
-      "icons/32x32.png",
-      "icons/128x128.png",
-      "icons/128x128@2x.png",
-      "icons/icon.icns",
-      "icons/icon.ico"
+      "icons/icon-20@2x.png",
+      "icons/icon-20@3x.png",
+      "icons/icon-29@2x.png",
+      "icons/icon-29@3x.png",
+      "icons/icon-38@2x.png",
+      "icons/icon-38@3x.png",
+      "icons/icon-40@2x.png",
+      "icons/icon-40@3x.png",
+      "icons/icon-64@2x.png",
+      "icons/icon-64@3x.png",
+      "icons/icon-76@2x.png",
+      "icons/icon-83.5@2x.png",
+      "icons/icon-1024.png"
     ]
   }
 }

@@ -14,3 +14,21 @@ export function rgbaToHex(rgba: RgbaArray): string {
     .map((c) => c.toString(16).padStart(2, "0"))
     .join("")}`;
 }
+
+export function contrastColor(color: RgbaArray): string {
+  const [r, g, b] = color;
+  const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+  return brightness >= 128 ? "#000000" : "#ffffff";
+}
+// 减淡颜色
+export function lightenColor(color: RgbaArray, percent: number): string {
+  const [r, g, b, a] = color;
+  const t = percent < 0 ? 0 : 255;
+  const p = Math.abs(percent) / 100;
+  return rgbaToHex([
+    Math.round((t - r) * p + r),
+    Math.round((t - g) * p + g),
+    Math.round((t - b) * p + b),
+    a,
+  ]);
+}

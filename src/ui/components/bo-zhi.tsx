@@ -3,6 +3,8 @@ import { useMemo, useState } from "react";
 import { contrastColor, hexToRgba } from "../../lib/utils";
 import "./bo-zhi.css";
 import ColorInput from "./color-input";
+import BoZhiPin from "./bo-zhi-pin";
+import BoZhiEdit from "./bo-zhi-edit";
 const defaultColor = "#fff4aa";
 export default function boZhi() {
   const [color, setColor] = useState(defaultColor);
@@ -14,7 +16,9 @@ export default function boZhi() {
   const barFontColor = useMemo(() => contrastColor(hexToRgba(color)), [color]);
   return (
     <div className="bo-zhi-content" style={{ background: color }}>
-      <div className="bo-zhi-content-main"></div>
+      <div className="bo-zhi-content-main">
+        <BoZhiEdit theme={barFontColor === "#ffffff" ? "classic" : "dark"} />
+      </div>
       <div className="bo-zhi-tool-bar" style={{ color: barFontColor }}>
         <ColorInput
           color={color}
@@ -22,6 +26,7 @@ export default function boZhi() {
           defaultColor={defaultColor}
         />
       </div>
+      <BoZhiPin fonsColor={barFontColor} />
     </div>
   );
 }

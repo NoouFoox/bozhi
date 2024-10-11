@@ -15,7 +15,7 @@ export function rgbaToHex(rgba: RgbaArray): string {
     .join("")}`;
 }
 
-export function contrastColor(color: RgbaArray): string {
+export function contrastColor(color: RgbaArray): '#000000' | '#ffffff' {
   const [r, g, b] = color;
   const brightness = (r * 299 + g * 587 + b * 114) / 1000;
   return brightness >= 128 ? "#000000" : "#ffffff";

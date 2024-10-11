@@ -5,10 +5,11 @@ use tauri::{TitleBarStyle, WebviewUrl, WebviewWindowBuilder};
 fn greet(name: &str) -> String {
     format!("Hello, {}! You've been greeted from Rust!", name)
 }
-
+// 更改窗口背景颜色
 #[tauri::command]
-fn set_background_color(window: tauri::Window,color: [f64; 4]) {
-    #[cfg(target_os = "macos")]{
+fn set_background_color(window: tauri::Window, color: [f64; 4]) {
+    #[cfg(target_os = "macos")]
+    {
         use cocoa::appkit::{NSColor, NSWindow};
         use cocoa::base::{id, nil};
         let ns_window = window.ns_window().unwrap() as id;
@@ -24,6 +25,12 @@ fn set_background_color(window: tauri::Window,color: [f64; 4]) {
             ns_window.setBackgroundColor_(bg_color);
         }
     }
+}
+// 窗口置顶
+#[tauri::command]
+fn set_pinned(window: tauri::Window, pinned: bool) -> Result<(), String> {
+    let _ = window.set_always_on_top(pinned);
+    Ok(())
 }
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
@@ -48,7 +55,11 @@ pub fn run() {
             Ok(())
         })
         .plugin(tauri_plugin_shell::init())
-        .invoke_handler(tauri::generate_handler![greet,set_background_color])
+        .invoke_handler(tauri::generate_handler![
+            greet,
+            set_background_color,
+            set_pinned
+        ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

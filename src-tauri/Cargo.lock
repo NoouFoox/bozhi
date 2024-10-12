@@ -162,11 +162,13 @@ name = "bozhi"
 version = "0.1.0"
 dependencies = [
  "cocoa 0.25.0",
+ "rand 0.8.5",
  "serde",
  "serde_json",
  "tauri",
  "tauri-build",
  "tauri-plugin-shell",
+ "uuid",
 ]
 
 [[package]]

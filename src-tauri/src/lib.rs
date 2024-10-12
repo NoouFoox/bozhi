@@ -23,6 +23,11 @@ fn set_background_color(window: tauri::Window, color: [f64; 4]) {
         }
     }
 }
+// 获取窗口 id
+#[tauri::command]
+fn get_window_id(window: tauri::Window) -> String {
+    window.label().to_string()
+}
 // 窗口置顶
 #[tauri::command]
 fn set_pinned(window: tauri::Window, pinned: bool) -> Result<(), String> {
@@ -62,7 +67,8 @@ pub fn run() {
         .invoke_handler(tauri::generate_handler![
             set_background_color,
             set_pinned,
-            add_new_window
+            add_new_window,
+            get_window_id
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
